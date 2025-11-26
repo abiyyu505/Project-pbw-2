@@ -5,6 +5,12 @@ menejemen sebuah hotel dan memesan hotel tanpa harus datang ke
 lokasi hotel, hanya dengan menggunakan website ini pengguna bisa melakukan
 manajemen hotel ataupun memesan hotel dimanapun dan kapanpun.
 
+## Cara Pemakaian
+
+- buat file .env lalu copy yang ada di .env.example lalu ubah isinya pada bagian DB_CONNECTION ubah menjadi mysql dan pada bagian DB_DATABASE ubah juga nama database sesuai dengan yang kalian pakai, lalu jangan lupa uncomment semua bagian tersebut agar bisa terhubung dengan database yang kalian miliki.
+- jika ingin menjalankan web ini kalian harus menjalankan dua terminal, terminal yang pertama kalian jalankan php artisan serve lalu terminal yang kedua kalian jalankan npm run dev.
+
+
 ## Fitur
 - lorem
 - lorem
