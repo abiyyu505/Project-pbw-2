@@ -1,11 +1,19 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RoomTypeController;
+use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/admin-dashboard', [DashboardController::class, 'index']);
+
+Route::resource('room-types', RoomTypeController::class);
+Route::resource('rooms', RoomController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
