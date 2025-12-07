@@ -4,53 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hotel Lingian</title>
+    <title>ROOMIFY</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
-    <div class="">
-        @include("components.navigation-landing")
-        
-        {{-- Top --}}
-        <h1 class="flex gap-4 flex-col text-center absolute items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  text-white font-bold text-5xl">
-            Make your self at home <span>in our hotel</span>
-        </h1>
-        <div class="w-full h-screen overflow-hidden">
-            <img class="w-full h-full object-cover" src="{{ asset("assets/queenBed-for-landingPage.webp") }}" alt="">
+<body class="bg-[#ededed]">
+    <div class="w-full relative overflow-hidden px-20 py-10">
+        {{-- banner background --}}
+        <div class=" w-full absolute -z-10 inset-0 h-96 overflow-hidden bg-cover">
+            <div class="bg-black/25 inset-0 top-0 left-0 absolute w-full h-full object-cover"></div>
+            <img class=" object-cover w-full h-full" src="{{ asset('assets/dark-blue-sky.webp') }}" alt="">
         </div>
+        
+        <div class="flex">
+            {{-- header & sidebar --}}
+            @include("components.side-landing")
+    
+            {{-- container --}}
+            <div class="w-full flex flex-col">
+                
+                 {{-- login & registration component --}}
+                <div class=" ml-auto">
+                    <div class="flex items-center gap-5">
 
-        {{-- about --}}
-        <div class="relative px-20 py-20 grid grid-cols-2">
-
-            <div>
-                <div class="absolute bg-white w-40 h-20 bottom-24 left-[500px] z-20 shadow-2xl pt-2 pl-6 rounded-lg">
-                    <h3 class="text-pink-700 font-bold">LINGIAN HOTEL</h3>
-                    <p class="text-xs text-gray-500 font-medium">32 Employees</p>
-                    <p class="text-xs text-gray-500 font-medium">24 Hours Service</p>
+                        {{-- Registration --}}
+                        <a href="" class=" backdrop-blur-lg shadow-xl bg-white/5 text-white rounded-full text-center px-5 text-md py-2 hover:bg-blue-500 transition-all duration-300">Registration</a>
+    
+                        {{-- Sign in --}}
+                        <a href="" class="shadow-xl bg-blue-500 text-white rounded-full text-center px-5 text-md py-2 hover:bg-blue-700 transition-all duration-300">Sign In</a>
+                    </div>
                 </div>
-                <div class="relative w-[500px] h-[550px] bg-gray-800 rounded-xl overflow-hidden">
-                    <img class=" object-fit w-full h-full" src="{{ asset('assets/simple-lobby.jpg') }}" alt="">
-                </div>
-            </div>
 
-            {{-- text about --}}
-            <div class="">
-                <h1 class="flex gap-3 font-semibold text-3xl py-14 text-gray-700">
-                    About Us <span class="bg-pink-700 w-20 h-2 rounded-full mt-6"></span>
-                </h1>
-                <h1 class="text-5xl font-bold text-gray-700">
-                    The best holidays <br>start here!
-                </h1>
-                <p class="w-[500px] mt-10">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi culpa dicta, sequi ad vel possimus dignissimos, laudantium velit architecto libero perspiciatis recusandae? Quo id, amet corporis modi numquam fugiat cum.
-                </p>
-                <p class="w-[500px] mt-5">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi culpa dicta, sequi ad vel possimus dignissimos, laudantium velit architecto libero perspiciatis recusandae? Quo id.
-                </p>
+                <div class="flex ml-20 mt-10 flex-col">
+
+                    {{-- section component --}}
+                    <div class="flex items-center gap-5">
+                        <a href="" class="flex flex-col items-center text-white bg-blue-500 rounded-md px-4 py-1">
+                            <x-heroicon-o-home-modern class=""/>
+                            HOTEL
+                        </a>
+                        <a href="" class="flex flex-col items-center  text-white px-4 py-1 hover:bg-blue-500 hover:rounded-md transition-all duration-300">
+                            <x-heroicon-o-building-office-2 class=""/>
+                            VILLA
+                        </a>
+                    </div>
+
+                    {{-- main section --}}
+                    <div class="w-full bg-white rounded-xl h-96 mt-8 px-10 py-5 grid grid-cols-6 grid-rows-5 gap-5 shadow-xl">
+
+                        {{-- Search --}}
+                        <div class=" col-span-6 ">
+                            <input type="text" class="border border-blue-500 w-full rounded-full outline-none transition-all duration-300 focus:bg-gray-100 px-10" placeholder="Search Hotel">
+                        </div>
+
+                        {{-- Location card --}}
+                        <div class="bg-[#f5f5f5] border border-gray-300 flex flex-col gap-3 rounded-xl col-span-3 row-span-2  px-10 py-3">
+                            <p class="flex items-center text-gray-400">
+                                <x-heroicon-o-map-pin class="w-6 h-6" />
+                                Location
+                            </p>
+                            <div class="flex flex-col gap-3">
+                                <p class="text-xl font-bold">Bandung, Indonesia</p>
+                            </div>
+                        </div>
+
+                        {{-- Room type card --}}
+                        <div class="bg-[#f5f5f5] border border-gray-300 flex flex-col gap-3 rounded-xl col-span-2 row-span-2  px-5 py-3">
+                            <p class="flex items-center text-sm text-gray-400">
+                                <x-heroicon-o-map-pin class="w-6 h-6" />
+                                Room Type
+                            </p>
+                            <div class="flex flex-col gap-3">
+                                <p class="text-xl font-bold">SUITE</p>
+                            </div>
+                        </div>
+
+                        {{-- Person --}}
+                        <div class="bg-[#f5f5f5] border border-gray-300 flex flex-col gap-3 rounded-xl row-span-2  px-5 py-3">
+                            <p class="flex items-center text-sm text-gray-400">
+                                <x-heroicon-o-map-pin class="w-6 h-6" />
+                                Person
+                            </p>
+                            <div class="flex flex-col gap-3">
+                                <p class="text-xl font-bold">2 Person</p>
+                            </div>
+                        </div>
+
+                        {{-- check in --}}
+                        <div class="bg-[#f5f5f5] border border-gray-300 flex flex-col gap-3 rounded-xl row-span-2 col-span-2  px-5 py-3">
+                            <p class="flex items-center text-sm text-gray-400">
+                                <x-heroicon-o-map-pin class="w-6 h-6" />
+                                Check In
+                            </p>
+                            <div class="flex flex-col gap-3">
+                                <p class="text-xl font-bold">7 Dec'25</p>
+                                <p class="text-sm text-gray-400">Sunday</p>
+                            </div>
+                        </div>
+
+                        {{-- check out --}}
+                        <div class="bg-[#f5f5f5] border border-gray-300 flex flex-col gap-3 rounded-xl row-span-2 col-span-2  px-5 py-3">
+                            <p class="flex items-center text-sm text-gray-400">
+                                <x-heroicon-o-map-pin class="w-6 h-6" />
+                                Check Out
+                            </p>
+                            <div class="flex flex-col gap-3">
+                                <p class="text-xl font-bold">8 Dec'25</p>
+                                <p class="text-sm text-gray-400">Monday</p>
+                            </div>
+                        </div>
+
+                        {{-- Search button --}}
+                        <div class="bg-gradient-to-br from-blue-500 to-[#002c89] cursor-pointer hover:bg-gradient-to-br hover:from-blue-600 hover:to-[#002679] transition-all duration-300 flex flex-col gap-3 items-center justify-center rounded-xl row-span-2 col-span-2  px-5 py-3">
+                            <p class="flex items-center text-2xl text-center font-semibold text-white">
+                                Search Hotel
+                            </p>
+                        </div>
+                    </div>
+
+                    {{-- special offer --}}
+                    <div class="mt-10">
+                        <p class="font-bold text-3xl">Special Offer</p>
+
+                        {{-- hotels container --}}
+                        <div class="mt-10 flex gap-5 max-w-5xl overflow-x-auto scrollbar-hide">
+                            @include('components.hotel-card', [
+                                'name' => 'Horison Ultima',
+                                'image' => 'assets/img-horison.jpg',
+                                'location' => 'Bandung'
+                            ])
+                            @include('components.hotel-card', [
+                                'name' => 'Horison Ultima',
+                                'image' => 'assets/img-horison.jpg',
+                                'location' => 'Bandung'
+                            ])
+                            @include('components.hotel-card', [
+                                'name' => 'Horison Ultima',
+                                'image' => 'assets/img-horison.jpg',
+                                'location' => 'Bandung'
+                            ])
+                            @include('components.hotel-card', [
+                                'name' => 'Horison Ultima',
+                                'image' => 'assets/img-horison.jpg',
+                                'location' => 'Bandung'
+                            ])
+                            @include('components.hotel-card', [
+                                'name' => 'Horison Ultima',
+                                'image' => 'assets/img-horison.jpg',
+                                'location' => 'Bandung'
+                            ])
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    @include("components.footer-landing")
 </body>
 </html>
