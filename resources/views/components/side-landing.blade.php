@@ -39,7 +39,7 @@
         </div>
 
         <div class="w-full mb-5">
-            <a class="px-4 py-2 flex gap-3 items-center bg-white rounded-full hover:bg-blue-500 transition-all duration-300 group text-blue-500 font-semibold hover:text-white" href="">
+            <a class="px-4 py-2 flex gap-3 items-center bg-white rounded-full hover:bg-blue-500 transition-all duration-300 group text-blue-500 font-semibold hover:text-white" href="{{ route('login') }}">
                 <x-heroicon-s-user class="w-6 h-6 text-blue-500 group-hover:text-white transition-all duration-300" />
                 Sign in
             </a>

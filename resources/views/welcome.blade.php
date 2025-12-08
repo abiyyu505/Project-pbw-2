@@ -16,7 +16,7 @@
         </div>
         
         <div class="flex">
-            {{-- header & sidebar --}}
+            {{-- sidebar --}}
             @include("components.side-landing")
     
             {{-- container --}}
@@ -27,10 +27,10 @@
                     <div class="flex items-center gap-5">
 
                         {{-- Registration --}}
-                        <a href="" class=" backdrop-blur-lg shadow-xl bg-white/5 text-white rounded-full text-center px-5 text-md py-2 hover:bg-blue-500 transition-all duration-300">Registration</a>
+                        <a href="{{ route('register') }}" class=" backdrop-blur-lg shadow-xl bg-white/5 text-white rounded-full text-center px-5 text-md py-2 hover:bg-blue-500 transition-all duration-300">Register</a>
     
                         {{-- Sign in --}}
-                        <a href="" class="shadow-xl bg-blue-500 text-white rounded-full text-center px-5 text-md py-2 hover:bg-blue-700 transition-all duration-300">Sign In</a>
+                        <a href="{{ route('login') }}" class="shadow-xl bg-blue-500 text-white rounded-full text-center px-5 text-md py-2 hover:bg-blue-700 transition-all duration-300">Sign In</a>
                     </div>
                 </div>
 
