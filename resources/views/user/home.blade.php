@@ -76,12 +76,12 @@
                     </div>
 
                     {{-- main section --}}
-                    <div class="w-full bg-white rounded-xl h-96 mt-8 px-10 py-5 grid grid-cols-6 grid-rows-5 gap-5 shadow-xl">
+                    <div class="w-full bg-white rounded-xl h-96 mt-8 px-10 py-5 grid grid-cols-6 grid-rows-5 gap-5 shadow-xl z-10">
 
                         {{-- Search & search card --}}
-                        <div x-data="{ open: false }" class=" col-span-6 z-20">
+                        <div x-data="{ open: false }" class=" col-span-6">
                             {{-- dump search --}}
-                            <input type="text" @click="open = true" readonly class="border border-blue-500 w-full rounded-full outline-none transition-all duration-300 hover:bg-gray-100 px-10 cursor-pointer" placeholder="Search Hotel">
+                            <input type="text" @click="open = true" readonly class="border border-blue-500 w-full rounded-full outline-none transition-all duration-300 hover:bg-gray-100 px-10 cursor-pointer " placeholder="Search Hotel">
 
                             <div x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
 
@@ -94,19 +94,43 @@
                                     </div>
                                 </div>
                                 <div class="w-full h-full py-10">
-                                    <h1 class="font-bold text-4xl">Try to search something!</h1>
+                                    {{-- <h1 class="font-bold text-4xl">Try to search something!</h1> --}}
+                                    @foreach ($hotels as $hotel)
+                                        <p> {{ $hotel->name }} </p>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
 
                         {{-- Location card --}}
-                        <div class="bg-[#f5f5f5] border border-gray-300 flex flex-col gap-3 rounded-xl col-span-3 row-span-2  px-10 py-3">
-                            <p class="flex items-center text-gray-400">
-                                <x-heroicon-o-map-pin class="w-6 h-6" />
-                                Location
-                            </p>
-                            <div class="flex flex-col gap-3">
-                                <p class="text-xl font-bold">Bandung, Indonesia</p>
+                        <div x-data="{ open: false }"  readonly class="col-span-3 row-span-2">
+                            
+                            <div x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
+                            
+                            {{-- location card & search container --}}
+                            <div x-show="open" @click.outside="open = false" class="bg-white flex flex-col fixed  rounded-md w-[800px] h-[500px] shadow-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 py-5"  >
+                                <div class="flex items-center gap-5">
+                                    <input type="text" class="w-full h-10 rounded-full px-5 border-blue-700 focus:bg-gray-100" placeholder="Search Location">
+                                    <div @click="open = false" class="w-6 h-6 cursor-pointer">
+                                        @svg('heroicon-o-x-mark')
+                                    </div>
+                                </div>
+                                <div class="w-full max-h-96 overflow-y-scroll py-10 flex flex-col gap-3 px-5">
+                                    @foreach ($locations as $location)
+                                        <p class=" font-semibold">{{ $location->city }}</p>
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            {{-- location card button --}}
+                            <div @click="open = true" class="bg-[#f5f5f5] border border-gray-300 flex flex-col gap-3 rounded-xl w-full h-full px-10 py-5 cursor-pointer">
+                                <p class="flex items-center text-gray-400">
+                                    <x-heroicon-o-map-pin class="w-6 h-6" />
+                                    Location
+                                </p>
+                                <div class="flex flex-col gap-3">
+                                    <p class="text-xl font-bold">Bandung, Indonesia</p>
+                                </div>
                             </div>
                         </div>
 
@@ -165,11 +189,11 @@
                     </div>
 
                     {{-- special offer --}}
-                    <div class="mt-10">
+                    <div class="mt-10 z-0">
                         <p class="font-bold text-3xl">Special Offer</p>
 
                         {{-- hotels container --}}
-                        <div class="mt-10 flex gap-5 max-w-5xl overflow-x-auto scrollbar-hide z-0">
+                        <div class="mt-10 flex gap-5 max-w-5xl overflow-x-auto scrollbar-hide">
                             @include('components.hotel-card', [
                                 'name' => 'Horison Ultima',
                                 'image' => 'assets/img-horison.jpg',
