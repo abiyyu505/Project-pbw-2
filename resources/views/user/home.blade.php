@@ -78,9 +78,25 @@
                     {{-- main section --}}
                     <div class="w-full bg-white rounded-xl h-96 mt-8 px-10 py-5 grid grid-cols-6 grid-rows-5 gap-5 shadow-xl">
 
-                        {{-- Search --}}
-                        <div class=" col-span-6 ">
-                            <input type="text" class="border border-blue-500 w-full rounded-full outline-none transition-all duration-300 focus:bg-gray-100 px-10" placeholder="Search Hotel">
+                        {{-- Search & search card --}}
+                        <div x-data="{ open: false }" class=" col-span-6 z-20">
+                            {{-- dump search --}}
+                            <input type="text" @click="open = true" readonly class="border border-blue-500 w-full rounded-full outline-none transition-all duration-300 hover:bg-gray-100 px-10 cursor-pointer" placeholder="Search Hotel">
+
+                            <div x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
+
+                            {{-- real search --}}
+                            <div x-show="open" @click.outside="open = false" class="bg-white flex flex-col fixed  rounded-md w-[800px] h-[500px] shadow-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 py-5">
+                                <div class="flex items-center gap-5">
+                                    <input type="text" class="w-full h-10 rounded-full px-5 border-blue-700 focus:bg-gray-100" placeholder="Search Hotel">
+                                    <div @click="open = false" class="w-6 h-6 cursor-pointer">
+                                        @svg('heroicon-o-x-mark')
+                                    </div>
+                                </div>
+                                <div class="w-full h-full py-10">
+                                    <h1 class="font-bold text-4xl">Try to search something!</h1>
+                                </div>
+                            </div>
                         </div>
 
                         {{-- Location card --}}
@@ -153,7 +169,7 @@
                         <p class="font-bold text-3xl">Special Offer</p>
 
                         {{-- hotels container --}}
-                        <div class="mt-10 flex gap-5 max-w-5xl overflow-x-auto scrollbar-hide">
+                        <div class="mt-10 flex gap-5 max-w-5xl overflow-x-auto scrollbar-hide z-0">
                             @include('components.hotel-card', [
                                 'name' => 'Horison Ultima',
                                 'image' => 'assets/img-horison.jpg',
