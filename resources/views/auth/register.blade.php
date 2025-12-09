@@ -1,6 +1,18 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register') }}" class="flex flex-col px-5">
         @csrf
+
+        {{-- Regis & login button --}}
+        <div class="flex gap-5 items-center ml-auto">
+            <a href="{{ route('login') }}" >Log in</a>
+            <a href="{{ route('register') }}" class="bg-blue-700 rounded-sm px-2 py-1 text-white font-semibold">Register</a>
+        </div>
+
+
+        {{-- label --}}
+        <div class="mt-7">
+            <h1 class="text-2xl font-bold">Register</h1>
+        </div>
 
         <!-- Name -->
         <div>

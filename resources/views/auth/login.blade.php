@@ -2,11 +2,24 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login') }}" class="flex flex-col px-5">
         @csrf
 
+        {{-- Regis & login button --}}
+        <div class="flex gap-5 items-center ml-auto">
+            <a href="{{ route('login') }}" class="bg-blue-700 rounded-sm px-2 py-1 text-white font-semibold">Log in</a>
+            <a href="{{ route('register') }}">Register</a>
+        </div>
+
+
+        {{-- label --}}
+        <div class="mt-16">
+            <h1 class="text-2xl font-bold">Log in</h1>
+        </div>
+
+
         <!-- Email Address -->
-        <div>
+        <div class="mt-5">
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -32,16 +45,16 @@
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="flex flex-col items-center justify-end mt-4">
+            <x-primary-button class="ms-3 flex w-full items-center text-center">
+                {{ __('Log in') }}
+            </x-primary-button>
+
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
         </div>
     </form>
 </x-guest-layout>

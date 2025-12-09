@@ -28,8 +28,10 @@
                 {{-- side get started --}}
                 <div class="relative rounded-tl-md rounded-bl-md flex w-96 h-[500px] overflow-hidden">
                     <img class=" object-cover w-full h-full" src="{{ asset('assets/login-background.jpg') }}" alt="">
-                    <div class="absolute left-[50%] ">
-                        <p class=" text-xl font-bold text-white ">Get Started</p>
+                    <div class="flex flex-col w-full absolute items-center left-1/2 -translate-x-1/2 top-72 gap-2">
+                        <p class=" text-2xl font-bold text-white ">Get Started</p>
+                        <a href="{{ route('register') }}" class="flex w-[96] border border-white rounded-md text-md text-lg text-white px-5 text-center py-3 hover:bg-white hover:text-blue-700 transition-all duration-300">Dont have an account?</a>
+                        <a href="{{ route('register') }}" class="flex w-[96] border border-white rounded-md text-md text-lg text-white px-7 text-center py-3 hover:bg-white hover:text-blue-700 transition-all duration-300">Sign in with Google+</a>
                     </div>
                 </div>
 
