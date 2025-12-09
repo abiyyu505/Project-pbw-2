@@ -7,10 +7,16 @@ manajemen hotel ataupun memesan hotel dimanapun dan kapanpun.
 
 ## Cara Pemakaian
 
-- jalankan ```bash composer install ```di terminal kalian.
-- jalankan ```bash npm install ``` di terminal kalian.
+- jalankan ```
+bash composer install 
+```di terminal kalian.
+- jalankan ```bash 
+npm install 
+``` di terminal kalian.
 - buat file .env lalu copy yang ada di .env.example lalu ubah isinya pada bagian DB_CONNECTION ubah menjadi mysql dan pada bagian DB_DATABASE ubah juga nama database sesuai dengan yang kalian pakai, lalu jangan lupa uncomment semua bagian tersebut agar bisa terhubung dengan database yang kalian miliki.
-- jalankan ```bash php artisan key:generate ``` di terminal.
+- jalankan ```bash 
+php artisan key:generate 
+``` di terminal.
 - jalankan ```bash composer require blade-ui-kit/blade-icons ``` di terminal
 - jalankan ```bash composer require blade-ui-kit/blade-heroicons ``` di terminal
 - jalankan ```bash composer require davidhsianturi/blade-bootstrap-icons ``` di terminal
