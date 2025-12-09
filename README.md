@@ -13,6 +13,7 @@ manajemen hotel ataupun memesan hotel dimanapun dan kapanpun.
 - jalankan php artisan key:generate di terminal.
 - jalankan 'composer require blade-ui-kit/blade-icons' di terminal
 - jalankan 'composer require blade-ui-kit/blade-heroicons' di terminal
+- jalankan 'composer require davidhsianturi/blade-bootstrap-icons' di terminal
 - sebelum kalian menjalankan web ini kalian harus melakukan php artisan migrate dan php artisan db:seed terlebih dahulu.
 - jika ingin menjalankan web ini kalian harus menjalankan dua terminal, terminal yang pertama kalian jalankan php artisan serve lalu terminal yang kedua kalian jalankan npm run dev.
 

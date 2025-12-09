@@ -17,20 +17,46 @@
         
         <div class="flex">
             {{-- sidebar --}}
-            @include("components.side-landing")
+            @include("components.side-landing-login")
             
             {{-- container --}}
             <div class="w-full flex flex-col">
                 
                  {{-- user profile --}}
                 <div class=" ml-auto">
-                    <div class="flex items-center gap-5">
+                    <div class="flex items-center w-full">
 
                         {{-- user profile button --}}
-                        <a href="{{ route('profile.edit') }}" class=" backdrop-blur-lg shadow-xl bg-white/5 text-white rounded-full text-center px-5 text-md py-2 hover:bg-blue-500 transition-all duration-300"> 
-                            
-                            {{ Auth::user()->name }} 
-                        </a>
+                        <x-dropdown align="right" width="48" > 
+                            <x-slot name='trigger'>
+                                <button class=" backdrop-blur-lg flex space-x-3 items-center shadow-xl bg-white/5 text-white rounded-full text-center px-5 text-md py-2 hover:bg-blue-500 transition-all duration-300">
+                                    <div class="w-8 h-8 rounded-full bg-white overflow-hidden shrink-0 text-gray-700 flex justify-center items-center">
+                                        @svg('bi-person-fill')
+                                    </div>
+        
+                                    <span class="">{{ Auth::user()->name }}</span>
+                                    <div class="flex w-5 h-5 ">
+                                        @svg('eva-arrow-ios-downward-outline')
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('profile.edit')">
+                                    {{ __('Profile') }}
+                                </x-dropdown-link>
+
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+
+                                    <x-dropdown-link :href="route('logout')" class="text-red-500 font-semibold hover:bg-red-500 hover:text-white"
+                                            onclick="event.preventDefault();
+                                                        this.closest('form').submit();">
+                                        {{ __('Log Out') }}
+                                    </x-dropdown-link>
+                                </form>
+                            </x-slot>
+                        </x-dropdown>
 
                     </div>
                 </div>
