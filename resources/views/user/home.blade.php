@@ -193,7 +193,7 @@
                         </div>
                     </div>
 
-                    <!-- Kalender langsung tampil -->
+                    
                         <div x-ref="calendar" class="calendar-modal w-full"></div>
                         <button @click="open = false" class="mt-5 bg-blue-500 hover:bg-blue-600 px-3 py-2 rounded-md text-white font-semibold transition-all duration-300">Submit</button>
                 </div>
@@ -240,7 +240,7 @@
                         </div>
                     </div>
 
-                    <!-- Kalender langsung tampil -->
+                    
                     <div x-ref="calendar" class="calendar-modal w-full"></div>
                     <button @click="open = false" class="mt-5 bg-blue-500 hover:bg-blue-600 px-3 py-2 rounded-md text-white font-semibold transition-all duration-300">Submit</button>
                 </div>
@@ -307,3 +307,39 @@
         </div>
     </div>
 </div>
+
+<script>
+        function hotelSearch() {
+            return {
+                location: 'Jakarta',
+                roomType: 'Standard',
+                person: '',
+                checkInDate: '',
+                checkOutDate: '',
+
+                showResult: false,
+                hotels: [],
+
+                async searchHotels() {
+                    const response = await fetch('/search-hotels', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            location: this.location,
+                            room_type: this.roomType,
+                            person: this.person,
+                            check_in: this.checkInDate,
+                            check_out: this.checkOutDate,
+                        })
+                    });
+
+                    const data = await response.json();
+                    this.hotels = data;
+                    this.showResult = true;
+                }
+            }
+        }
+    </script>

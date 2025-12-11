@@ -75,51 +75,19 @@
                 </div>
                 
                 {{-- container --}}
-                <div x-show="page === 'home'">
-                    @include('user.home')
-                </div>
-
-                <div x-show="page === 'booking'">
-                    @include('user.booking')
+                <div>
+                    <div x-show="page === 'home'">
+                        @include('user.home')
+                    </div>
+    
+                    <div x-show="page === 'booking'">
+                        @include('user.booking')
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script>
-        function hotelSearch() {
-            return {
-                location: 'Jakarta',
-                roomType: 'Standard',
-                person: '',
-                checkInDate: '',
-                checkOutDate: '',
-
-                showResult: false,
-                hotels: [],
-
-                async searchHotels() {
-                    const response = await fetch('/search-hotels', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        },
-                        body: JSON.stringify({
-                            location: this.location,
-                            room_type: this.roomType,
-                            person: this.person,
-                            check_in: this.checkInDate,
-                            check_out: this.checkOutDate,
-                        })
-                    });
-
-                    const data = await response.json();
-                    this.hotels = data;
-                    this.showResult = true;
-                }
-            }
-        }
-    </script>
+    
 </body>
 </html>

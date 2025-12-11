@@ -5,17 +5,17 @@
 
             <p class="text-white font-bold text-xl">ROOMIFY</p>
             <ul class="flex flex-col gap-3 text-lg text-white mt-10">
-                <li @click="page = 'home'" class="bg-blue-500 rounded-full px-4 py-1 cursor-pointer">
+                <li @click="page = 'home'" class="rounded-full px-4 py-1 cursor-pointer hover:bg-blue-500 transition-all duration-300" :class="page === 'home' ? 'bg-blue-500' : 'bg-transparent'">
                     <button  class="flex gap-3 items-center ">
                         <x-heroicon-o-home class="w-6 h-6 text-white" />
                         Home
                     </button>
                 </li>
-                <li @click="page = 'booking'" class="px-4 py-1 hover:bg-blue-500 hover:rounded-full transition-all duration-300 cursor-pointer">
-                    <a  class="flex gap-3 items-center " >
+                <li @click="page = 'booking'" class="px-4 py-1 hover:bg-blue-500 rounded-full transition-all duration-300 cursor-pointer" :class="page === 'booking' ? 'bg-blue-500' : 'bg-transparent'">
+                    <button class="flex gap-3 items-center " >
                         <x-heroicon-o-clipboard-document class="w-6 h-6 text-white"  />
                         Booking
-                    </a>
+                    </button>
                 </li>
                 <li class="px-4 py-1 hover:bg-blue-500 hover:rounded-full transition-all duration-300">
                     <a href="" class="flex gap-3 items-center">
