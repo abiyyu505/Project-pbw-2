@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('address')->nullable();
-            $table->string('room_type');
             $table->foreignId('location_id')->constrained('locations', 'id')->onDelete('cascade')->onUpdate('cascade');
             $table->string('photo')->nullable();
             $table->timestamps();

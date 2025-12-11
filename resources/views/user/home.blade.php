@@ -105,7 +105,7 @@
                         </div>
 
                         {{-- Location card --}}
-                        <div x-data="{ open: false, location: 'Bandung', search: '' }"  readonly class="col-span-3 row-span-2">
+                        <div x-data="{ open: false, search: '' }"  readonly class="col-span-3 row-span-2">
                             
                             <div x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
                             
@@ -143,28 +143,35 @@
                         </div>
 
                         {{-- Room type card --}}
-                        <div x-data="{ open: false, roomType: 'Suite', search: '' }" readonly class="col-span-2 row-span-2 ">
+                        <div x-data="{ open: false, search: '' }" readonly class="col-span-2 row-span-2 ">
 
                            <div x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
                             
-                            {{-- Room type card & search container --}}
+                            {{-- Room type card --}}
                             <div x-show="open" @click.outside="open = false" class="bg-white flex flex-col fixed  rounded-md w-[800px] h-[500px] shadow-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 py-5"  >
-                                <div class="flex items-center gap-5">
-
-                                    {{-- input search --}}
-                                    <input x-model="search" type="text" class="w-full h-10 rounded-full px-5 border-blue-700 focus:bg-gray-100" placeholder="Search Room Type">
+                                <div class="flex items-center justify-between">
+                                    {{-- close button --}}
+                                    <h1 class="text-xl font-semibold">Choose Room Type</h1>
                                     <div @click="open = false" class="w-6 h-6 cursor-pointer">
                                         @svg('heroicon-o-x-mark')
                                     </div>
                                 </div>
-                                <div class="w-full max-h-96 overflow-y-scroll py-10 flex flex-col gap-3 px-5">
-                                    @foreach ($hotels as $hotel)
-                                        
-                                        {{-- view search --}}
-                                        <template x-if="'{{ strtolower($hotel->room_type) }}'.includes(search.toLowerCase())">
-                                            <p @click="roomType = '{{ $hotel->room_type }}'; open = false" class=" font-semibold cursor-pointer">{{ $hotel->room_type }}</p>
-                                        </template>
-                                    @endforeach
+                                <div class="w-full max-h-96 py-10 flex flex-col gap-3 px-5">
+                                    <div @click="roomType = 'Standard'; open = false" class=" border border-gray-400 w-full h-20 px-20 py-5 rounded-md text-xl font-semibold flex items-center cursor-pointer hover:bg-blue-700/30 transition-all duration-300">
+                                        <p>Standard</p>
+                                    </div>
+                                    <div @click="roomType = 'Deluxe'; open = false" class=" border border-gray-400 w-full h-20 px-20 py-5 rounded-md text-xl font-semibold flex items-center cursor-pointer hover:bg-blue-700/30 transition-all duration-300">
+                                        <p>Deluxe</p>
+                                    </div>
+                                    <div @click="roomType = 'Suite'; open = false" class=" border border-gray-400 w-full h-20 px-20 py-5 rounded-md text-xl font-semibold flex items-center cursor-pointer hover:bg-blue-700/30 transition-all duration-300">
+                                        <p>Suite</p>
+                                    </div>
+                                    <div @click="roomType = 'Family Room'; open = false" class=" border border-gray-400 w-full h-20 px-20 py-5 rounded-md text-xl font-semibold flex items-center cursor-pointer hover:bg-blue-700/30 transition-all duration-300">
+                                        <p>Family Room</p>
+                                    </div>
+                                    <div @click="roomType = 'Executive'; open = false" class=" border border-gray-400 w-full h-20 px-20 py-5 rounded-md text-xl font-semibold flex items-center cursor-pointer hover:bg-blue-700/30 transition-all duration-300">
+                                        <p>Executive</p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -181,7 +188,7 @@
                         </div>
 
                         {{-- Person --}}
-                        <div x-data="{open: false, person: '2 persons'}" class=" row-span-2">
+                        <div x-data="{open: false, person: person = '2 persons'}" class=" row-span-2">
 
                             <div x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
 
@@ -334,7 +341,32 @@
                                 Search Hotel
                             </p>
                         </div>
+                        
+                        {{-- modal for search hotel button --}}
+                        <div x-show="showResult" class="fixed" >
+
+                            <div x-show="showResult" @click="showResult = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
+
+                            <div @click.outside="showResult = false" class="fixed top-1/2 left-1/2 bg-white w-[800px] h-[500px] rounded-md shadow-xl p-10 -translate-x-1/2 -translate-y-1/2 overflow-y-scroll">
+                                <h2 class="text-2xl font-bold mb-5">Hotels Results</h2>
+        
+                                <template x-if="hotels.length === 0">
+                                    <p class="text-gray-500">No hotels found.</p>
+                                </template>
+
+                                <div class="flex flex-col gap-5 ">
+                                    <template x-for="hotel in hotels" :key="hotel.id">
+                                        <a class="py-3 cursor-pointer hover:bg-blue-700/30 transition-all duration-300 bg-white rounded-md border border-gray-200 px-10">
+                                            <p class="font-semibold text-xl" x-text="hotel.name"></p>
+                                            <p class="text-gray-600" x-text="hotel.location.city"></p>
+                                            <p class="text-gray-500">Room: <span x-text="hotel.rooms.length > 0 ? hotel.rooms[0].room_type : '-'"></span></p>
+                                        </a>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
 
                     {{-- special offer --}}
                     <div class="mt-10 z-0">
@@ -342,32 +374,13 @@
 
                         {{-- hotels container --}}
                         <div class="mt-10 flex gap-5 max-w-5xl overflow-x-auto scrollbar-hide">
+                            @foreach ($hotels as $hotel)
                             @include('components.hotel-card', [
-                                'name' => 'Horison Ultima',
+                                'name' => $hotel->name,
                                 'image' => 'assets/img-horison.jpg',
-                                'location' => 'Bandung'
+                                'location' => $hotel->location->city
                             ])
-                            @include('components.hotel-card', [
-                                'name' => 'Horison Ultima',
-                                'image' => 'assets/img-horison.jpg',
-                                'location' => 'Bandung'
-                            ])
-                            @include('components.hotel-card', [
-                                'name' => 'Horison Ultima',
-                                'image' => 'assets/img-horison.jpg',
-                                'location' => 'Bandung'
-                            ])
-                            @include('components.hotel-card', [
-                                'name' => 'Horison Ultima',
-                                'image' => 'assets/img-horison.jpg',
-                                'location' => 'Bandung'
-                            ])
-                            @include('components.hotel-card', [
-                                'name' => 'Horison Ultima',
-                                'image' => 'assets/img-horison.jpg',
-                                'location' => 'Bandung'
-                            ])
-
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -378,8 +391,8 @@
     <script>
         function hotelSearch() {
             return {
-                location: '',
-                roomType: '',
+                location: 'Jakarta',
+                roomType: 'Standard',
                 person: '',
                 checkInDate: '',
                 checkOutDate: '',
@@ -387,7 +400,7 @@
                 showResult: false,
                 hotels: [],
 
-                async searchHotels() => {
+                async searchHotels() {
                     const response = await fetch('/search-hotels', {
                         method: 'POST',
                         headers: {
