@@ -278,7 +278,7 @@
 
                     <div class="flex flex-col gap-5 ">
                         <template x-for="hotel in hotels" :key="hotel.id">
-                            <a class="py-3 cursor-pointer hover:bg-blue-700/30 transition-all duration-300 bg-white rounded-md border border-gray-200 px-10">
+                            <a :href="`/hotel-detail/${hotel.id}`" class="py-3 cursor-pointer hover:bg-blue-700/30 transition-all duration-300 bg-white rounded-md border border-gray-200 px-10">
                                 <p class="font-semibold text-xl" x-text="hotel.name"></p>
                                 <p class="text-gray-600" x-text="hotel.location.city"></p>
                                 <p class="text-gray-500">Room: <span x-text="hotel.rooms.length > 0 ? hotel.rooms[0].room_type : '-'"></span></p>

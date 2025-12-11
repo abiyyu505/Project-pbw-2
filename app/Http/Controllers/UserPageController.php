@@ -36,4 +36,8 @@ class UserPageController extends Controller
 
         return response()->json($result);
     }
+
+    public function hotel($id){
+        return view('user.hotel.detail');
+    }
 }
