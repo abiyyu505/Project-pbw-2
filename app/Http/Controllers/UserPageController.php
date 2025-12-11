@@ -11,7 +11,7 @@ class UserPageController extends Controller
     public function home(){
         $locations = Location::all();
         $hotels = Hotel::all();
-        return view('user.home', compact('locations', 'hotels'));
+        return view('user.main', compact('locations', 'hotels'));
     }
 
     public function search(Request $request){

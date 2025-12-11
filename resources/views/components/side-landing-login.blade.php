@@ -5,14 +5,14 @@
 
             <p class="text-white font-bold text-xl">ROOMIFY</p>
             <ul class="flex flex-col gap-3 text-lg text-white mt-10">
-                <li class="bg-blue-500 rounded-full px-4 py-1">
-                    <a href="" class="flex gap-3 items-center">
+                <li @click="page = 'home'" class="bg-blue-500 rounded-full px-4 py-1 cursor-pointer">
+                    <button  class="flex gap-3 items-center ">
                         <x-heroicon-o-home class="w-6 h-6 text-white" />
                         Home
-                    </a>
+                    </button>
                 </li>
-                <li class="px-4 py-1 hover:bg-blue-500 hover:rounded-full transition-all duration-300">
-                    <a href="" class="flex gap-3 items-center" >
+                <li @click="page = 'booking'" class="px-4 py-1 hover:bg-blue-500 hover:rounded-full transition-all duration-300 cursor-pointer">
+                    <a  class="flex gap-3 items-center " >
                         <x-heroicon-o-clipboard-document class="w-6 h-6 text-white"  />
                         Booking
                     </a>

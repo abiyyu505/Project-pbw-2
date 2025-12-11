@@ -12,7 +12,7 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/home', [UserPageController::class, 'home'])->middleware(['auth', 'verified'])->name('user.home');
+Route::get('/home', [UserPageController::class, 'home'])->middleware(['auth', 'verified'])->name('user.main');
 
 Route::post('/search-hotels', [UserPageController::class, 'search'])->middleware(['auth', 'verified']);
 
