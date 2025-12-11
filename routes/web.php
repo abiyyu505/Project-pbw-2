@@ -14,6 +14,8 @@ Route::get('/', function () {
 
 Route::get('/home', [UserPageController::class, 'home'])->middleware(['auth', 'verified'])->name('user.home');
 
+Route::post('/search-hotels', [UserPageController::class, 'search'])->middleware(['auth', 'verified']);
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

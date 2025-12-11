@@ -13,4 +13,27 @@ class UserPageController extends Controller
         $hotels = Hotel::all();
         return view('user.home', compact('locations', 'hotels'));
     }
+
+    public function search(Request $request){
+        $location = $request->location;
+        $roomType = $request->room_type;
+        
+        $result = Hotel::with(['location', 'rooms'])
+            ->where(function ($q) use ($location, $roomType) {
+                if ($location) {
+                    $q->orWhereHas('location', function ($loc) use ($location) {
+                        $loc->where('city', 'LIKE', "%$location%");
+                    });
+                }
+
+                if ($roomType) {
+                    $q->orWhereHas('rooms', function ($room) use ($roomType) {
+                        $room->where('room_type', 'LIKE', "%$roomType%");
+                    });
+                }
+            })
+            ->get();
+
+        return response()->json($result);
+    }
 }
