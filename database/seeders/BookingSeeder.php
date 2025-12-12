@@ -14,7 +14,7 @@ class BookingSeeder extends Seeder
     public function run(): void
     {
 
-        $status = ['pending', 'complited', 'canceled'];
+        $status = ['pending', 'completed', 'canceled'];
 
         $data = [];
         for($i = 1; $i <= 5; $i++){

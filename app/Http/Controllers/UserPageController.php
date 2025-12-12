@@ -15,9 +15,10 @@ class UserPageController extends Controller
         $locations = Location::all();
         $hotels = Hotel::all();
         $bookings_pending = Booking::where('user_id', $userId)->where('status', 'pending')->get();
-        $bookings_complited = Booking::where('user_id', $userId)->where('status', 'complited')->get();
+        $bookings_completed = Booking::where('user_id', $userId)->where('status', 'completed')->get();
         $bookings_canceled = Booking::where('user_id', $userId)->where('status', 'canceled')->get();
-        return view('user.main', compact('locations', 'hotels', 'bookings_pending', 'bookings_complited', 'bookings_canceled'));
+        $bookings_history = Booking::where('user_id', $userId)->get();
+        return view('user.main', compact('locations', 'hotels', 'bookings_pending', 'bookings_completed', 'bookings_canceled', 'bookings_history'));
     }
 
     public function search(Request $request){
@@ -44,6 +45,9 @@ class UserPageController extends Controller
     }
 
     public function hotel($id){
-        return view('user.hotel.detail');
+        $hotel = Hotel::with('rooms', 'location')->findOrFail($id);
+        $priceAvg = $hotel->rooms->avg('price');
+        
+        return view('user.hotel.detail', compact('hotel', 'priceAvg'));
     }
 }

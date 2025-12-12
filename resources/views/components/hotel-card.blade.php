@@ -9,5 +9,5 @@
             {{ $location }} 
         </p>
     </div>
-    <a href="" class="absolute bottom-5 right-5 bg-blue-500 hover:bg-blue-600 transition-all duration-300 rounded-md px-2 py-1 text-white font-semibold mt-auto ml-auto">Book Now</a>
+    <a href="{{ route('hotel.detail', $hotel->id) }}" class="absolute bottom-5 right-5 bg-blue-500 hover:bg-blue-600 transition-all duration-300 rounded-md px-2 py-1 text-white font-semibold mt-auto ml-auto">Book Now</a>
 </div>

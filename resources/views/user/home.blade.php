@@ -5,22 +5,22 @@
             {{-- Search & search card --}}
             <div x-data="{ open: false }" class=" col-span-6">
                 {{-- dump search --}}
-                <input type="text" @click="open = true" readonly class="border border-blue-500 w-full rounded-full outline-none transition-all duration-300 hover:bg-gray-100 px-10 cursor-pointer " placeholder="Search Hotel">
+                <input type="text" @click="open = true" readonly class="border border-blue-500 w-full rounded-full outline-none transition-all duration-300 hover:bg-gray-100 px-10 cursor-pointer " placeholder="Search Hotel Name">
 
                 <div x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
 
                 {{-- real search --}}
                 <div x-show="open" @click.outside="open = false" class="bg-white flex flex-col fixed  rounded-md w-[800px] h-[500px] shadow-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 py-5">
                     <div class="flex items-center gap-5">
-                        <input type="text" class="w-full h-10 rounded-full px-5 border-blue-700 focus:bg-gray-100" placeholder="Search Hotel">
+                        <input type="text" class="w-full h-10 rounded-full px-5 border-blue-700 focus:bg-gray-100" placeholder="Search Hotel Name">
                         <div @click="open = false" class="w-6 h-6 cursor-pointer">
                             @svg('heroicon-o-x-mark')
                         </div>
                     </div>
-                    <div class="w-full h-full py-10">
+                    <div class="w-full h-[500px] px-6 flex flex-col gap-3 overflow-y-auto py-10">
                         {{-- <h1 class="font-bold text-4xl">Try to search something!</h1> --}}
                         @foreach ($hotels as $hotel)
-                            <p> {{ $hotel->name }} </p>
+                            <a href="{{ route('hotel.detail', $hotel->id) }}" class="text-xl font-semibold"> {{ $hotel->name }} </a>
                         @endforeach
                     </div>
                 </div>
