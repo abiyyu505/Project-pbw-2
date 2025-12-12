@@ -5,13 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Location;
 use App\Models\Hotel;
+use App\Models\Booking;
+use Illuminate\Support\Facades\Auth;
 
 class UserPageController extends Controller
 {
     public function home(){
+        $userId = Auth::id();
         $locations = Location::all();
         $hotels = Hotel::all();
-        return view('user.main', compact('locations', 'hotels'));
+        $bookings_pending = Booking::where('user_id', $userId)->where('status', 'pending')->get();
+        $bookings_complited = Booking::where('user_id', $userId)->where('status', 'complited')->get();
+        $bookings_canceled = Booking::where('user_id', $userId)->where('status', 'canceled')->get();
+        return view('user.main', compact('locations', 'hotels', 'bookings_pending', 'bookings_complited', 'bookings_canceled'));
     }
 
     public function search(Request $request){

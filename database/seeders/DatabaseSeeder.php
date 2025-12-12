@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             UserPertama::class,
             HotelSeeder::class,
             RoomSeeder::class,
-            
+            BookingSeeder::class,
         ]);
         
     }

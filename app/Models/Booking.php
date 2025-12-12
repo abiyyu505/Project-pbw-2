@@ -13,7 +13,7 @@ class Booking extends Model
     }
 
     public function room(){
-        return $this->hasMany(Room::class);
+        return $this->belongsTo(Room::class);
     }
 
     public function payment(){

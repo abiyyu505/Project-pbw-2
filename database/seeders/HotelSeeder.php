@@ -10,6 +10,8 @@ class HotelSeeder extends Seeder
 {
     public function run()
     {
+        
+
         $data = [];
 
         for ($i = 1; $i <= 50; $i++) {

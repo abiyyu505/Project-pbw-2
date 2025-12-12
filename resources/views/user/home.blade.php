@@ -59,7 +59,7 @@
                         Location
                     </p>
                     <div class="flex flex-col gap-3">
-                        <p x-text="location" class="text-xl font-bold"></p>
+                        <p x-text="location + ', ' + country" class="text-xl font-bold"></p>
                     </div>
                 </div>
             </div>
@@ -311,6 +311,7 @@
 <script>
         function hotelSearch() {
             return {
+                country: 'indonesia',
                 location: 'Jakarta',
                 roomType: 'Standard',
                 person: '',
