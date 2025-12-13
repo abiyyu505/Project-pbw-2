@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('booking_id')->constrained('bookings', 'id')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('order_id');
+            $table->decimal('amount');
             $table->string('snap_token')->nullable();
             $table->string('status', 32)->default('pending');
             $table->dateTime('expired_at')->nullable();
