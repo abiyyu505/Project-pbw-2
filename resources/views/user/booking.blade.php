@@ -22,7 +22,7 @@
 
             
             {{-- progress section --}}
-            <div class="flex w-full h-full mt-10 " x-show="section === 'in progress'">
+            <div class="flex w-full h-full mt-10 " x-cloak x-show="section === 'in progress'">
                 <div class="flex flex-col gap-5">
                     @if ($bookings_pending->isEmpty())
                         <div>
@@ -66,7 +66,7 @@
 
 
             {{-- history section --}}
-            <div class="flex w-full h-full mt-10 bg-blue-500" x-show="section === 'history'">
+            <div class="flex w-full h-full mt-10 bg-blue-500" x-cloak x-show="section === 'history'">
                 <div class="flex flex-col gap-5">
                     @if ($bookings_history->isEmpty())
                         <div>
@@ -110,7 +110,7 @@
 
 
             {{-- completed section --}}
-            <div class="flex w-full h-full mt-10 bg-blue-500" x-show="section === 'completed'">
+            <div class="flex w-full h-full mt-10 bg-blue-500" x-cloak x-show="section === 'completed'">
                 <div class="flex flex-col gap-5">
                     @if ($bookings_completed->isEmpty())
                         <div class="bg-transparent">
@@ -154,7 +154,7 @@
 
 
             {{-- canceled section --}}
-            <div class="flex w-full h-full mt-10 bg-blue-500" x-show="section === 'canceled'">
+            <div class="flex w-full h-full mt-10 bg-blue-500" x-cloak x-show="section === 'canceled'">
                 <div class="flex flex-col gap-5">
                     @if ($bookings_canceled->isEmpty())
                         <div class="bg-transparent">

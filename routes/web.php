@@ -3,9 +3,12 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserPageController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Hotel;
+
 
 Route::get('/', function () {
-    return view('welcome');
+    $hotels = Hotel::all();
+    return view('welcome', compact('hotels'));
 });
 
 // Route::get('/dashboard', function () {

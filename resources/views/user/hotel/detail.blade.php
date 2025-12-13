@@ -6,9 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hotel - detail</title>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-[#ededed]">
+<body class="bg-[#ededed] scroll-smooth">
     <div class="w-full relative overflow-hidden px-20 py-10">
         {{-- banner background --}}
         <div class=" w-full absolute -z-10 inset-0 h-96 overflow-hidden bg-cover">
@@ -103,14 +108,38 @@
                 <div class="w-full flex justify-between">
                     <div class="flex flex-col gap-3">
                         <h1 class="text-3xl font-bold "> {{ $hotel->name }} </h1>
-                        <p class="bg-blue-700/10 text-sm px-2  text-blue-600 w-max rounded-full">Hotels</p>
+                        <div class="flex items-center">
+                            <p class="bg-blue-700/10 text-sm px-2  text-blue-600 w-max rounded-full">Hotels</p>
+                            @php
+                                if ($priceAvg < 200000) {
+                                    $bintang = 1;
+                                }elseif ($priceAvg >= 200000 && $priceAvg < 300000) {
+                                    $bintang = 2;
+                                }
+                                 elseif ($priceAvg >= 300000 && $priceAvg < 600000) {
+                                    $bintang = 3;
+                                }
+                                elseif ($priceAvg >= 600000 && $priceAvg < 1000000) {
+                                    $bintang = 4;
+                                }
+                                elseif ($priceAvg >= 1000000) {
+                                    $bintang = 5;
+                                }
+                            @endphp
+                            
+                            <div class="flex items-center ml-3">
+                                @for ($i = 1; $i <= $bintang; $i++)
+                                    <p class="text-yellow-500 text-2xl">★</p>
+                                @endfor
+                            </div>
+                        </div>
                     </div>
 
                     <div class="flex items-center gap-3">
                         <p class="text-2xl text-blue-700 font-bold">Rp {{ number_format($priceAvg, 0, ',', '.') }}</p>
-                        <div class="text-white font-bold bg-blue-700 px-2 py-2 rounded-md text-xl cursor-pointer hover:bg-blue-800 transition-all duration-300">
+                        <a  href="#select-room" class="text-white font-bold bg-blue-700 px-2 py-2 rounded-md text-xl cursor-pointer hover:bg-blue-800 transition-all duration-300">
                             <p>Select Room</p>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
@@ -201,31 +230,31 @@
                         <div>
                             <h1 class="text-xl font-bold">Main Facilities</h1>
                             <div class="grid grid-cols-2 grid-rows-4 mt-5 gap-5">
-                                <div class="flex gap-2">
+                                <div class="flex gap-2 items-center">
                                     <i class="text-blue-700" data-lucide="air-vent"></i>
                                     <p class="text-xs font-semibold">AC</p>
                                 </div>
-                                <div class="flex gap-2">
+                                <div class="flex gap-2 items-center">
                                     <i class="text-blue-700" data-lucide="fork-knife"></i>
                                     <p class="text-xs font-semibold">Restaurant</p>
                                 </div>
-                                <div class="flex gap-2">
+                                <div class="flex gap-2 items-center">
                                     <i class="text-blue-700" data-lucide="arrow-up-down"></i>
                                     <p class="text-xs font-semibold">Elevator</p>
                                 </div>
-                                <div class="flex gap-2">
+                                <div class="flex gap-2 items-center">
                                     <i class="text-blue-700" data-lucide="waves" ></i>
                                     <p class="text-xs font-semibold">Swimming Pool</p>
                                 </div>
-                                <div class="flex gap-2">
+                                <div class="flex gap-2 items-center">
                                     <i class="text-blue-700" data-lucide="parking-square"></i>
                                     <p class="text-xs font-semibold">Parking Area</p>
                                 </div>
-                                <div class="flex gap-2">
+                                <div class="flex gap-2 items-center">
                                     <i class="text-blue-700" data-lucide="wifi"></i>
                                     <p class="text-xs font-semibold">Wifi</p>
                                 </div>
-                                <div class="flex gap-2">
+                                <div class="flex gap-2 items-center">
                                     <i class="text-blue-700" data-lucide="tv"></i>
                                     <p class="text-xs font-semibold">TV</p>
                                 </div>
@@ -236,9 +265,9 @@
 
 
                 {{-- hotel rooms --}}
-                <div class="w-full mt-20">
+                <div id="select-room" class="w-full mt-20">
                     @if ($hotel->rooms->isEmpty())
-                        <h1 class="text-2xl font-bold mt-40 flex items-center justify-center">Nothing Room Available in {{ $hotel->name }} </h1>
+                        <h1 class="text-2xl font-bold mt-40 flex items-center justify-center">There Are No Rooms Available at {{ $hotel->name }} </h1>
                     @else
                         <h1 class="text-2xl font-bold">Available Room Types in {{ $hotel->name }}</h1>
                         @foreach ($hotel->rooms as $room)

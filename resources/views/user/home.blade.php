@@ -7,10 +7,10 @@
                 {{-- dump search --}}
                 <input type="text" @click="open = true" readonly class="border border-blue-500 w-full rounded-full outline-none transition-all duration-300 hover:bg-gray-100 px-10 cursor-pointer " placeholder="Search Hotel Name">
 
-                <div x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
+                <div x-cloak x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
 
                 {{-- real search --}}
-                <div x-show="open" @click.outside="open = false" class="bg-white flex flex-col fixed  rounded-md w-[800px] h-[500px] shadow-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 py-5">
+                <div x-cloak x-show="open" @click.outside="open = false" class="bg-white flex flex-col fixed  rounded-md w-[800px] h-[500px] shadow-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 py-5">
                     <div class="flex items-center gap-5">
                         <input type="text" class="w-full h-10 rounded-full px-5 border-blue-700 focus:bg-gray-100" placeholder="Search Hotel Name">
                         <div @click="open = false" class="w-6 h-6 cursor-pointer">
@@ -29,10 +29,10 @@
             {{-- Location card --}}
             <div x-data="{ open: false, search: '' }"  readonly class="col-span-3 row-span-2">
                 
-                <div x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
+                <div x-cloak x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
                 
                 {{-- location card & search container --}}
-                <div x-show="open" @click.outside="open = false" class="bg-white flex flex-col fixed  rounded-md w-[800px] h-[500px] shadow-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 py-5"  >
+                <div x-cloak x-show="open" @click.outside="open = false" class="bg-white flex flex-col fixed  rounded-md w-[800px] h-[500px] shadow-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 py-5"  >
                     <div class="flex items-center gap-5">
 
                         {{-- input search --}}
@@ -67,10 +67,10 @@
             {{-- Room type card --}}
             <div x-data="{ open: false, search: '' }" readonly class="col-span-2 row-span-2 ">
 
-                <div x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
+                <div x-cloak x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
                 
                 {{-- Room type card --}}
-                <div x-show="open" @click.outside="open = false" class="bg-white flex flex-col fixed  rounded-md w-[800px] h-[500px] shadow-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 py-5"  >
+                <div x-cloak x-show="open" @click.outside="open = false" class="bg-white flex flex-col fixed  rounded-md w-[800px] h-[500px] shadow-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 py-5"  >
                     <div class="flex items-center justify-between">
                         {{-- close button --}}
                         <h1 class="text-xl font-semibold">Choose Room Type</h1>
@@ -112,10 +112,10 @@
             {{-- Person --}}
             <div x-data="{open: false, person: person = '2 persons'}" class=" row-span-2">
 
-                <div x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
+                <div x-cloak x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
 
                 {{-- person container --}}
-                <div x-show="open" @click.outside="open = false" class="bg-white flex flex-col fixed rounded-md w-[800px] h-[500px] shadow-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 py-5 ">
+                <div x-cloak x-show="open" @click.outside="open = false" class="bg-white flex flex-col fixed rounded-md w-[800px] h-[500px] shadow-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 py-5 ">
                     <div @click="open = false" class="w-6 h-6 cursor-pointer ml-auto">
                             @svg('heroicon-o-x-mark')
                     </div>
@@ -181,10 +181,10 @@
                 class="row-span-2 col-span-2"
             >
                 
-                <div x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
+                <div x-cloak x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
 
                 {{-- modal --}}
-                <div x-show="open" @click.outside="open = false" class="bg-white flex flex-col fixed rounded-md w-[400px] h-[450px] shadow-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 py-5 ">
+                <div x-cloak x-show="open" @click.outside="open = false" class="bg-white flex flex-col fixed rounded-md w-[400px] h-[450px] shadow-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 py-5 ">
 
                     <div class="flex items-center mb-4">
                         <p class="font-bold text-2xl">Choose Check In Date</p>
@@ -228,10 +228,10 @@
                 class="row-span-2 col-span-2"
             >
                 
-                <div x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
+                <div x-cloak x-show="open" @click="open = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
 
                 {{-- modal --}}
-                <div x-show="open" @click.outside="open = false" class="bg-white flex flex-col fixed rounded-md w-[400px] h-[450px] shadow-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 py-5 ">
+                <div x-cloak x-show="open" @click.outside="open = false" class="bg-white flex flex-col fixed rounded-md w-[400px] h-[450px] shadow-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 py-5 ">
 
                     <div class="flex items-center mb-4">
                         <p class="font-bold text-2xl">Choose Check Out Date</p>
@@ -265,9 +265,9 @@
             </div>
             
             {{-- modal for search hotel button --}}
-            <div x-show="showResult" class="fixed" >
+            <div x-cloak x-show="showResult" class="fixed" >
 
-                <div x-show="showResult" @click="showResult = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
+                <div x-cloak x-show="showResult" @click="showResult = false" class="bg-black/30 fixed w-full h-full top-0 left-0"></div>
 
                 <div @click.outside="showResult = false" class="fixed top-1/2 left-1/2 bg-white w-[800px] h-[500px] rounded-md shadow-xl p-10 -translate-x-1/2 -translate-y-1/2 overflow-y-scroll">
                     <h2 class="text-2xl font-bold mb-5">Hotels Results</h2>

@@ -115,9 +115,9 @@
 
                         {{-- Search button --}}
                         <div class="bg-gradient-to-br from-blue-500 to-[#002c89] cursor-pointer hover:bg-gradient-to-br hover:from-blue-600 hover:to-[#002679] transition-all duration-300 flex flex-col gap-3 items-center justify-center rounded-xl row-span-2 col-span-2  px-5 py-3">
-                            <p class="flex items-center text-2xl text-center font-semibold text-white">
+                            <a href="{{ route('login') }}" class="flex items-center text-2xl text-center font-semibold text-white">
                                 Search Hotel
-                            </p>
+                            </a>
                         </div>
                     </div>
 
@@ -126,33 +126,15 @@
                         <p class="font-bold text-3xl">Special Offer</p>
 
                         {{-- hotels container --}}
-                        <div class="mt-10 flex gap-5 max-w-5xl overflow-x-auto scrollbar-hide">
-                            @include('components.hotel-card', [
-                                'name' => 'Horison Ultima',
-                                'image' => 'assets/img-horison.jpg',
-                                'location' => 'Bandung'
-                            ])
-                            @include('components.hotel-card', [
-                                'name' => 'Horison Ultima',
-                                'image' => 'assets/img-horison.jpg',
-                                'location' => 'Bandung'
-                            ])
-                            @include('components.hotel-card', [
-                                'name' => 'Horison Ultima',
-                                'image' => 'assets/img-horison.jpg',
-                                'location' => 'Bandung'
-                            ])
-                            @include('components.hotel-card', [
-                                'name' => 'Horison Ultima',
-                                'image' => 'assets/img-horison.jpg',
-                                'location' => 'Bandung'
-                            ])
-                            @include('components.hotel-card', [
-                                'name' => 'Horison Ultima',
-                                'image' => 'assets/img-horison.jpg',
-                                'location' => 'Bandung'
-                            ])
 
+                        <div class="mt-10 flex gap-5 max-w-5xl overflow-x-auto scrollbar-hide">
+                            @foreach ($hotels as $hotel)
+                                @include('components.hotel-card', [
+                                    'name' => $hotel->name,
+                                    'image' => 'assets/img-horison.jpg',
+                                    'location' => $hotel->location->city
+                                ])
+                            @endforeach
                         </div>
                     </div>
                 </div>
