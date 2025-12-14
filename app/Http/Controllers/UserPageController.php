@@ -14,7 +14,7 @@ class UserPageController extends Controller
         $userId = Auth::id();
         $locations = Location::all();
         $hotels = Hotel::all();
-        $bookings_pending = Booking::where('user_id', $userId)->where('status', 'pending')->get();
+        $bookings_pending = Booking::where('user_id', $userId)->whereIn('status', ['pending', 'paid'])->get();
         $bookings_completed = Booking::where('user_id', $userId)->where('status', 'completed')->get();
         $bookings_canceled = Booking::where('user_id', $userId)->where('status', 'canceled')->get();
         $bookings_history = Booking::where('user_id', $userId)->get();

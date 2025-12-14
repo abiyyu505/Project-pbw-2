@@ -5,26 +5,19 @@ use App\Http\Controllers\UserPageController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Hotel;
 use App\Http\Controllers\PaymentGatewayController;
+use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', function () {
     $hotels = Hotel::all();
+    if (Auth::check()) {
+        return redirect()->route('user.main');
+    }
     return view('welcome', compact('hotels'));
 });
 
-Route::get('/midtrans-test', function () {
-    \Midtrans\Config::$serverKey = config('midtrans.server_key');
-    \Midtrans\Config::$isProduction = false;
-    \Midtrans\Config::$isSanitized = true;
-    \Midtrans\Config::$is3ds = true;
 
-    return \Midtrans\Snap::getSnapToken([
-        'transaction_details' => [
-            'order_id' => 'TEST-' . time(),
-            'gross_amount' => 10000
-        ]
-    ]);
-});
+Route::post('/midtrans/notification', [PaymentGatewayController::class, 'notification']);
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
