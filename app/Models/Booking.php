@@ -6,7 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'user_id',
+        'room_id',
+        'check_in',
+        'check_out',
+        'price',
+        'status'
+    ];
 
     public function user(){
         return $this->belongsTo(User::class);
@@ -17,6 +24,6 @@ class Booking extends Model
     }
 
     public function payment(){
-        return $this->belongsTo(Payment::class);
+        return $this->hasOne(Payment::class);
     }
 }

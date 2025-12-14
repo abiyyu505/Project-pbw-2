@@ -6,9 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'booking_id',
+        'order_id',
+        'amount',
+        'status',
+        'snap_token'
+    ];
 
     public function booking(){
-        return $this->hasOne(Booking::class);
+        return $this->belongsTo(Booking::class);
     }
 }

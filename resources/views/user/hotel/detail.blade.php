@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hotel - detail</title>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script
+        src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="{{ config('midtrans.client_key') }}">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <style>
         [x-cloak] {
             display: none !important;
@@ -283,7 +289,8 @@
 
 
     <script>
-    lucide.createIcons();
+        lucide.createIcons();
     </script>
+    
 </body>
 </html>
