@@ -28,8 +28,5 @@ manajemen hotel ataupun memesan hotel dimanapun dan kapanpun.
 NIM        | Nama            | Username Github
 -----------|-----------------| ---------------
 607062400048 | Ihsan Faiz | IhsanFaiz
-607062400028 | Nabila Khairunnisa | nblkhainns
-607062400078 | Fitri Nurhidayat | fitrihdyt
-607062400105 | Baiq Izza Aziza | usernameMhs4
 6070624000xx | Nama Mahasiswa5 | usernameMhs5
 6070624000xx | Nama Mahasiswa6 | usernameMhs6
