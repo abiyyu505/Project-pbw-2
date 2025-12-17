@@ -52,6 +52,8 @@ class UserPageController extends Controller
     }
 
     public function map($id){
-        return view('user.hotel.map');
+        $hotel = Hotel::with('location')->findOrFail($id);
+
+        return view('user.hotel.map', compact('hotel'));
     }
 }
