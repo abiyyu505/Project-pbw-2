@@ -17,11 +17,11 @@
                         Booking
                     </button>
                 </li>
-                <li class="px-4 py-1 hover:bg-blue-500 hover:rounded-full transition-all duration-300">
-                    <a href="" class="flex gap-3 items-center">
+                <li @click="page = 'history'" class="px-4 py-1 hover:bg-blue-500 rounded-full transition-all duration-300 cursor-pointer" :class="page === 'history' ? 'bg-blue-500' : 'bg-transparent'">
+                    <button class="flex gap-3 items-center">
                         <x-heroicon-o-clock class="w-6 h-6 text-white"/>
                         History
-                    </a>
+                    </button>
                 </li>
                 <li class="px-4 py-1 hover:bg-blue-500 hover:rounded-full transition-all duration-300">
                     <a href="" class="flex gap-3 items-center">

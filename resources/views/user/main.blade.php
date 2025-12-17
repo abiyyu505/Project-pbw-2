@@ -88,6 +88,10 @@
                     <div x-cloak x-show="page === 'booking'">
                         @include('user.booking')
                     </div>
+
+                    <div x-cloak x-show="page === 'history'">
+                        @include('user.history')
+                    </div>
                 </div>
             </div>
         </div>
