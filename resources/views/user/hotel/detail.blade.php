@@ -180,7 +180,14 @@
                     {{-- location --}}
                     <div class="border px-5 py-5 rounded-xl border-gray-300">
                         <div>
-                            <p class="text-xl font-bold">In the Area</p>
+                            <div class="flex justify-between items-center">
+                                <p class="text-xl font-bold">In the Area</p>
+                                <a href="{{ route('hotel.map', $hotel->id) }}" class="flex items-center gap-2">
+                                    <span href="" class="text-lg text-blue-700">Detail Location</span>
+                                    <span class="w-5 h-5 flex text-blue-700">@svg('eva-arrow-ios-forward')</span>
+                                </a>
+                            </div>
+
                             <p class="px-3 mt-3"> {{ $hotel->address . ', ' . $hotel->location->city . ', ' . $hotel->location->state . ', ' . $hotel->location->country}} </p>
                             <p class="px-2 bg-blue-700/10 mt-3 font-semibold rounded-full w-max text-sm">Near area</p>
                             <div class="flex flex-col gap-3 mt-3">

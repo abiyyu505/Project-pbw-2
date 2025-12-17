@@ -66,7 +66,7 @@
 
 
             {{-- history section --}}
-            <div class="flex w-full h-full mt-10 bg-blue-500" x-cloak x-show="section === 'history'">
+            <div class="flex w-full h-full mt-10 " x-cloak x-show="section === 'history'">
                 <div class="flex flex-col gap-5">
                     @if ($bookings_history->isEmpty())
                         <div>
@@ -90,7 +90,7 @@
                                 <td class="px-11 py-3 text-center"> {{ $booking->room->room_type }} </td>
                                 <td class="px-11 py-3 text-center"> {{ $booking->check_in }} </td>
                                 <td class="px-11 py-3 text-center"> {{ $booking->check_out }} </td>
-                                <td class="px-11 py-3 text-center"><span x-data="{status: '{{ $booking->status }}'}" :class="{'bg-green-300 text-green-700': status === 'completed', 'bg-green-300 text-green-700': status === 'paid', 'bg-gray-300 text-gray-700': status === 'pending', 'bg-red-300 text-red-700': status === 'canceled'}" class="flex items-center justify-center px-1 font-semibold rounded-full">{{ $booking->status }}</span></td>
+                                <td class="px-11 py-3 text-center"><span x-data="{status: '{{ $booking->status }}'}" :class="{'bg-green-300 text-green-700': status === 'completed' || status === 'paid', 'bg-gray-300 text-gray-700': status === 'pending', 'bg-red-300 text-red-700': status === 'canceled'}" class="flex items-center justify-center px-1 font-semibold rounded-full">{{ $booking->status }}</span></td>
                             </tr>
                         @else
                             <tr class="bg-white hover:bg-gray-100">
@@ -99,7 +99,7 @@
                                 <td class="px-11 py-3 text-center"> {{ $booking->room->room_type }} </td>
                                 <td class="px-11 py-3 text-center"> {{ $booking->check_in }} </td>
                                 <td class="px-11 py-3 text-center"> {{ $booking->check_out }} </td>
-                                <td class="px-11 py-3 text-center"><span x-data="{status: '{{ $booking->status }}'}" :class="{'bg-green-300 text-green-700': status === 'completed', 'bg-green-300 text-green-700': status === 'paid', 'bg-gray-300 text-gray-700': status === 'pending', 'bg-red-300 text-red-700': status === 'canceled'}" class="flex items-center justify-center px-1 font-semibold rounded-full">{{ $booking->status }}</span></td>
+                                <td class="px-11 py-3 text-center"><span x-data="{status: '{{ $booking->status }}'}" :class="{'bg-green-300 text-green-700': status === 'completed' || status === 'paid', 'bg-gray-300 text-gray-700': status === 'pending', 'bg-red-300 text-red-700': status === 'canceled'}" class="flex items-center justify-center px-1 font-semibold rounded-full">{{ $booking->status }}</span></td>
                             </tr>
                         @endif
                         @endforeach
@@ -110,7 +110,7 @@
 
 
             {{-- completed section --}}
-            <div class="flex w-full h-full mt-10 bg-blue-500" x-cloak x-show="section === 'completed'">
+            <div class="flex w-full h-full mt-10 " x-cloak x-show="section === 'completed'">
                 <div class="flex flex-col gap-5">
                     @if ($bookings_completed->isEmpty())
                         <div class="bg-transparent">
@@ -154,7 +154,7 @@
 
 
             {{-- canceled section --}}
-            <div class="flex w-full h-full mt-10 bg-blue-500" x-cloak x-show="section === 'canceled'">
+            <div class="flex w-full h-full mt-10 " x-cloak x-show="section === 'canceled'">
                 <div class="flex flex-col gap-5">
                     @if ($bookings_canceled->isEmpty())
                         <div class="bg-transparent">

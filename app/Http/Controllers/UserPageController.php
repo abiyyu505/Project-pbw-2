@@ -50,4 +50,8 @@ class UserPageController extends Controller
         
         return view('user.hotel.detail', compact('hotel', 'priceAvg'));
     }
+
+    public function map($id){
+        return view('user.hotel.map');
+    }
 }

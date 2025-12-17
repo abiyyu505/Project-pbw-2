@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 
 Route::post('/midtrans/notification', [PaymentGatewayController::class, 'notification']);
+Route::get('/hotel/map/{id}', [UserPageController::class, 'map'])->middleware(['auth', 'verified'])->name('hotel.map');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
