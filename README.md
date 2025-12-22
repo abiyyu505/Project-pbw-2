@@ -18,10 +18,16 @@ manajemen hotel ataupun memesan hotel dimanapun dan kapanpun.
 - jika ingin menjalankan web ini kalian harus menjalankan dua terminal, terminal yang pertama kalian jalankan ``` php artisan serve ``` lalu terminal yang kedua kalian jalankan ``` npm run dev ``` .
 
 
-## Fitur
-- lorem
-- lorem
-- lorem
+# Pembagian Tugas
+
+## Ihsan Faiz
+- Mengerjakan semua bagian User
+
+## Abiyyu
+- Mengerjakan bagian admin dashboard
+
+## Barefi
+- Mengerjakan dokumentasi
 
 ### Susunan Tim
 
