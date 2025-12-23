@@ -7,13 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     protected $fillable = [
+        'invoice_id',
         'user_id',
         'room_id',
         'check_in',
         'check_out',
-        'price',
+        'total_price',
         'status'
     ];
+
 
     public function user(){
         return $this->belongsTo(User::class);

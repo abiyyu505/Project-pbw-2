@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserPageController;
+use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Hotel;
 use App\Http\Controllers\PaymentGatewayController;

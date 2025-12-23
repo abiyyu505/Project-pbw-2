@@ -18,5 +18,11 @@ class UserPertama extends Seeder
             'email' => 'user1@example.com',
             'password' => bcrypt('admin123'), 
         ]);
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin1@example.com',
+            'password' => bcrypt('admin123'),
+            'is_admin' => 1
+        ]);
     }
 }

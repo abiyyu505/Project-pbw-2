@@ -13,7 +13,7 @@ class HotelPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class HotelPolicy
      */
     public function view(User $user, Hotel $hotel): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class HotelPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -37,7 +37,7 @@ class HotelPolicy
      */
     public function update(User $user, Hotel $hotel): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -45,7 +45,7 @@ class HotelPolicy
      */
     public function delete(User $user, Hotel $hotel): bool
     {
-        return false;
+        return true;
     }
 
     /**
