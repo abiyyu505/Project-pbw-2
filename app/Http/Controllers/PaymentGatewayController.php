@@ -27,6 +27,8 @@ class PaymentGatewayController extends Controller
 
         $price = $pricePerNight * $days;
 
+        $invoiceId = 'INV-' . now()->format('Ymd') . '-' . now()->format('His');
+
         // SSL anjing gw bypass lu bangsat
         putenv('CURL_SSL_NO_VERIFY=1');
 
@@ -43,11 +45,12 @@ class PaymentGatewayController extends Controller
 
         try {
             $booking = Booking::create([
+                'invoice_id' => $invoiceId,
                 'user_id' => Auth::id(),
                 'room_id' => $request->room_id,
                 'check_in' => $request->check_in,
                 'check_out' => $request->check_out,
-                'price' => $price,
+                'total_price' => $price,
             ]);
 
             $orderId = 'BOOK-' . $booking->id . '-' . time();

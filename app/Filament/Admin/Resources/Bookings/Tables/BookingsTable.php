@@ -27,6 +27,7 @@ class BookingsTable
                 TextColumn::make('check_out')
                     ->searchable(),
                 TextColumn::make('total_price')
+                    ->prefix('Rp ')
                     ->searchable(),
                 TextColumn::make('status')
                     ->searchable()

@@ -28,9 +28,16 @@
 
             <div class="flex flex-col w-full">
                 {{-- user profile --}}
-                <div class=" ml-auto">
-                    <div class="flex items-center w-full">
-    
+                <div class="flex items-center ml-auto">
+                    <div class="flex items-center w-full gap-5">
+                        {{-- admin dahsboard button --}}
+                        @auth
+                            @if (auth()->user()->is_admin == 1)
+                                <div class=" cursor-pointer backdrop-blur-lg flex space-x-3 items-center shadow-xl bg-white/5 text-white rounded-full text-center px-5 text-md py-2 hover:bg-blue-500 transition-all duration-300">
+                                    <a href="{{ route('filament.admin.pages.dashboard') }}">Dashboard</a>
+                                </div>
+                            @endif
+                        @endauth
                         {{-- user profile button --}}
                         <x-dropdown align="right" width="48" > 
                             <x-slot name='trigger'>
@@ -97,6 +104,8 @@
         </div>
     </div>
 
-    
+    {{-- footer --}}
+    @include("components.footer-hotel")
+
 </body>
 </html>

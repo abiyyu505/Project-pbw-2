@@ -21,7 +21,7 @@ class RoomsTable
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('price')
-                    ->money('IDR')
+                    ->prefix('Rp ')
                     ->sortable(),
                 TextColumn::make('capacity')
                     ->searchable(),

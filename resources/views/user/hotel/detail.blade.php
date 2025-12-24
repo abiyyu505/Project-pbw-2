@@ -294,6 +294,7 @@
         </div>
     </div>
 
+    @include("components.footer-hotel")
 
     <script>
         lucide.createIcons();

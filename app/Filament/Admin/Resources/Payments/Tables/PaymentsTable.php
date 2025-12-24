@@ -21,15 +21,15 @@ class PaymentsTable
                     ->searchable(),
                 TextColumn::make('amount')
                     ->numeric()
+                    ->prefix('Rp ')
                     ->sortable(),
                 TextColumn::make('status')
-                    ->searchable(),
-                TextColumn::make('expired_at')
-                    ->dateTime()
-                    ->sortable(),
-                TextColumn::make('paid_at')
-                    ->dateTime()
-                    ->sortable(),
+                    ->searchable()
+                    ->colors([
+                        'warning' => 'pending',
+                        'success' => 'paid',
+                        'danger' => 'canceled'
+                    ]),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
