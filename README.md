@@ -18,21 +18,37 @@ manajemen hotel ataupun memesan hotel dimanapun dan kapanpun.
 - jika ingin menjalankan web ini kalian harus menjalankan dua terminal, terminal yang pertama kalian jalankan ``` php artisan serve ``` lalu terminal yang kedua kalian jalankan ``` npm run dev ``` .
 
 
-# Pembagian Tugas
+# Fitur - fitur
 
-## Ihsan Faiz
-- Mengerjakan semua bagian User
+## Fitur Pengguna (User)
+- Registrasi dan login pengguna
+- Melihat daftar hotel
+- Melihat detail hotel dan kamar
+- Melakukan pemesanan kamar hotel
+- Mengisi data pemesanan (check-in dan check-out)
+- Melihat riwayat pemesanan
+- Melihat detail invoice pemesanan
+- Melakukan pembayaran dengan status (pending / paid)
 
-## Abiyyu
-- Mengerjakan bagian admin dashboard
+## Fitur Admin
+- Login admin
+- Manajemen data hotel
+- Manajemen data kamar
+- Manajemen data booking
+- Manajemen data pembayaran
+- Pembuatan dan pengelolaan invoice
+- Pengelolaan status booking dan pembayaran
+- Dashboard admin menggunakan Filament
 
-## Barefi
-- Mengerjakan dokumentasi
+## Fitur Sistem
+- Sistem autentikasi dan otorisasi
+- Relasi database (hotel, room, booking, payment, invoice)
+- Validasi input form
+- Penyimpanan data menggunakan database MySQL
+- Dibangun menggunakan framework Laravel
 
 ### Susunan Tim
 
 NIM        | Nama            | Username Github
 -----------|-----------------| ---------------
 607062400048 | Ihsan Faiz | IhsanFaiz
-6070624000xx | Nama Mahasiswa5 | usernameMhs5
-6070624000xx | Nama Mahasiswa6 | usernameMhs6
