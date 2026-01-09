@@ -141,5 +141,7 @@
             </div>
         </div>
     </div>
+
+    @include("components.footer-hotel")
 </body>
 </html>
