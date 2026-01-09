@@ -1,6 +1,6 @@
-# Website Perhotelan
+# Website Perhotelan ROOMIFY
 
-Website Perhotelan adalah website yang mempermudah pengguna dalam
+ROOMIFY adalah website yang mempermudah pengguna dalam
 menejemen sebuah hotel dan memesan hotel tanpa harus datang ke
 lokasi hotel, hanya dengan menggunakan website ini pengguna bisa melakukan
 manajemen hotel ataupun memesan hotel dimanapun dan kapanpun.
