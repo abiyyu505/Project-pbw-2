@@ -18,6 +18,16 @@ manajemen hotel ataupun memesan hotel dimanapun dan kapanpun.
 - jika ingin menjalankan web ini kalian harus menjalankan dua terminal, terminal yang pertama kalian jalankan ``` php artisan serve ``` lalu terminal yang kedua kalian jalankan ``` npm run dev ``` .
 
 
+## Tech Stack
+
+- Laravel
+- Tailwind CSS
+- Alpine.js
+- MySQL
+- Filament Admin Panel
+- Vite
+
+
 # Fitur - fitur
 
 
